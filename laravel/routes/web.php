@@ -32,3 +32,6 @@ Route::get('/kategori_galeri/{id}','KategoriGaleriController@show')->name('kateg
 
 Route::get('/kategori_pengumuman','KategoriPengumumanController@index')->name('kategori_pengumuman.index');
 Route::get('/kategori_pengumuman/{id}','KategoriPengumumanController@show')->name('kategori_pengumuman.show');
+
+Route::get('/Migrations','MigrationsController@index')->name('Migrations.index');
+Route::get('/Migrations/{id}','MigrationsController@show')->name('Migrations.show');
