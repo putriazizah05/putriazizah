@@ -3,16 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class KategoriGaleri extends Model
+class kategoriGaleri extends Model
 {
-     protected $table='kategori_galeri';
+    use SoftDeletes;
+
+    protected $table='kategori_galeri';
 
     protected $fillable=[
-    	'id','nama','users_id'
+        'nama', 'users_id'
     ];
 
     protected $casts=[
-
+        'Deleted_at'=>'datetime'
+        
     ];
 }
