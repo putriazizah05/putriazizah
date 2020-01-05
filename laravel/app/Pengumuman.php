@@ -5,10 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class pengumuman extends Model
+class Pengumuman extends Model
 {
-	use SoftDeletes;
-	
+    use SoftDeletes;
+
     protected $table='pengumuman';
 
     protected $fillable=[
@@ -16,7 +16,6 @@ class pengumuman extends Model
     ];
 
     protected $casts=[
-    	'Deleted_at'=>'datetime'
-        
+        'deleted_at'=>'datetime'
     ];
 }

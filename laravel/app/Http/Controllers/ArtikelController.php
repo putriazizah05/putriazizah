@@ -2,49 +2,51 @@
 
 namespace App\Http\Controllers;
 
-use App\Artikel;
 use Illuminate\Http\Request;
+use App\Artikel;
 use App\KategoriArtikel;
 
-class artikelcontroller extends Controller
+class ArtikelController extends Controller
 {
     public function index(){
         
         $listArtikel=Artikel::all(); 
-        return view('artikel.index' ,compact('listArtikel'));
     
+        
+        return view('artikel.index' ,compact('listArtikel'));
     }
 
     public function show($id){
+
         $Artikel=Artikel::find($id);
-        return view('artikel.show' ,compact('Artikel'));
+
+
+        return view('artikel.show', compact('Artikel'));
     }
-
     public function create(){
-        $KategoriArtikel=KategoriArtikel::pluck('nama', 'id');
 
-        return view('artikel.create',compact('KategoriArtikel'));
+        $kategoriArtikel= KategoriArtikel::pluck('nama', 'id');
+        
+
+        return view('artikel.create',compact('kategoriArtikel'));
     }
 
     public function store(Request $request){
-        $input= $request->all();
+        $input=$request->all();
+
         Artikel::create($input);
 
         return redirect(route('artikel.index'));
     }
-
     public function edit($id){
         $Artikel=Artikel::find($id);
-        $KategoriArtikel=KategoriArtikel::pluck('nama', 'id');
+        $kategoriArtikel= KategoriArtikel::pluck('nama', 'id');
+
         if(empty($Artikel)){
             return redirect(route('artikel.index'));
         }
-        
-
-        return view('artikel.edit',compact('Artikel','KategoriArtikel'));
-
+        return view('artikel.edit', compact('Artikel', 'kategoriArtikel'));
     }
-
     public function update($id,Request $request){
         $Artikel=Artikel::find($id);
         $input= $request->all();
@@ -54,24 +56,22 @@ class artikelcontroller extends Controller
         }
 
         $Artikel->update($input);
+
         return redirect(route('artikel.index'));
-
     }
-
     public function destroy($id){
         $Artikel=Artikel::find($id);
-
+     
         if(empty($Artikel)){
             return redirect(route('artikel.index'));
         }
-
         $Artikel->delete();
         return redirect(route('artikel.index'));
     }
-
     public function trash(){
-        
+    
         $listArtikel=Artikel::onlyTrashed(); 
         return view('artikel.index' ,compact('listArtikel'));
     }
 }
+

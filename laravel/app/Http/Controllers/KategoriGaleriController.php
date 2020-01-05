@@ -5,73 +5,63 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\KategoriGaleri;
 
-class kategorigalericontroller extends Controller
+class KategoriGaleriController extends Controller
 {
     public function index(){
-        
-        $listKategoriGaleri=KategoriGaleri::all(); 
+        $listKategoriGaleri=KategoriGaleri::all();
 
-        return view('kategori_galeri.index' ,compact('listKategoriGaleri'));
+        return view('kategori_galeri.index', compact('listKategoriGaleri'));
     }
 
     public function show($id){
+        $kategoriGaleri=KategoriGaleri::find($id);
 
-        $KategoriGaleri=KategoriGaleri::find($id);
-
-        return view('kategori_Galeri.show' ,compact('KategoriGaleri'));
-
+        return view('kategori_galeri.show', compact('kategoriGaleri'));
     }
-
     public function create(){
         return view('kategori_galeri.create');
     }
 
+
     public function store(Request $request){
-        $input= $request->all();
-        KategoriGaleri::create($input);
+     $input= $request->all();
+     
+     KategoriGaleri::create($input);
 
-        return redirect(route('kategori_galeri.index'));
+     return redirect(route('kategori_galeri.index'));
     }
-
     public function edit($id){
-        $KategoriGaleri=KategoriGaleri::find($id);
+        $kategoriGaleri=KategoriGaleri::find($id);
 
-        if(empty($KategoriGaleri)){
+        if(empty($kategoriGaleri)){
             return redirect(route('kategori_galeri.index'));
         }
-
-        return view('kategori_galeri.edit',compact('KategoriGaleri'));
-
+        return view('kategori_galeri.edit', compact('kategoriGaleri'));
     }
-
     public function update($id,Request $request){
-        $KategoriGaleri=KategoriGaleri::find($id);
+        $kategoriGaleri=KategoriGaleri::find($id);
         $input= $request->all();
 
-        if(empty($KategoriGaleri)){
+        if(empty($kategoriGaleri)){
             return redirect(route('kategori_galeri.index'));
         }
 
-        $KategoriGaleri->update($input);
+        $kategoriGaleri->update($input);
+
         return redirect(route('kategori_galeri.index'));
-
     }
-
     public function destroy($id){
-        $KategoriGaleri=KategoriGaleri::find($id);
-
-        if(empty($KategoriGaleri)){
+        $kategoriGaleri=KategoriGaleri::find($id);
+     
+        if(empty($kategoriGaleri)){
             return redirect(route('kategori_galeri.index'));
         }
-
-        $KategoriGaleri->delete();
+        $kategoriGaleri->delete();
         return redirect(route('kategori_galeri.index'));
     }
-
     public function trash(){
-        
+    
         $listKategoriGaleri=KategoriGaleri::onlyTrashed(); 
         return view('kategori_galeri.index' ,compact('listKategoriGaleri'));
-        
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnDeletedAtInGaleri extends Migration
+class AddColumnDeletedAtInArtikel extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class AddColumnDeletedAtInGaleri extends Migration
      */
     public function up()
     {
-        Schema::table('galeri', function (Blueprint $table) {
-             $table->softDeletes();
+        Schema::table('artikel', function (Blueprint $table) {
+            $table->softDeletes();
         });
-
-         Schema::table('kategori_galeri', function (Blueprint $table) {
-             $table->softDeletes();
+        Schema::table('kategori_artikel', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -29,11 +28,10 @@ class AddColumnDeletedAtInGaleri extends Migration
      */
     public function down()
     {
-        Schema::table('galeri', function (Blueprint $table) {
+        Schema::table('artikel', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
-
-        Schema::table('kategori_galeri', function (Blueprint $table) {
+        Schema::table('kategori_artikel', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
     }

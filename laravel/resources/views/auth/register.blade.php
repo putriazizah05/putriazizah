@@ -84,7 +84,7 @@
 
                                     <button type="button" class="btn btn-success btn-refresh">Refresh</button>
                                 </div>
-                                <input type="text" id="captcha" class="form-control" placeholder="Enter captcha" name="captcha">
+                                <input type="text" id="captcha" class="form-control" placeholder="Enter Captcha" name="captcha">
                                 @if ($errors->has('captcha'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('captcha')}}</strong>

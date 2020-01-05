@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class kategoriBerita extends Model
+class KategoriBerita extends Model
 {
     use SoftDeletes;
 
@@ -14,9 +14,7 @@ class kategoriBerita extends Model
     protected $fillable=[
         'nama', 'users_id'
     ];
-
     protected $casts=[
-        'Deleted_at'=>'datetime'
-        
+        'deleted_at'=>'datetime'
     ];
 }

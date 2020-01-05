@@ -7,10 +7,9 @@
             <div class="card">
                 <div class="card-header">List Kategori Galeri</div>                
                 <div class="card-body">
-                <a href="{!! route('kategori_galeri.create') !!}" class="btn btn-info">Tambah Data</a>
-           
-                <table border="1">
-                    <tr>
+                <a href="{!! route('kategori_galeri.create') !!}" class="btn btn-primary">Tambahkan Data</a>
+                <table class="table table-bordered table-primary">
+                    <tr class="table table-bordered table-dark">
                         <td>ID</td>
                         <td>Nama</td>
                         <td>Users Id</td>
@@ -29,15 +28,14 @@
                         <td>{!! $item->updated_at->format('d/m/Y H:i') !!}</td>
                         <td>
                             <a href="{!! route('kategori_galeri.show' ,[$item->id]) !!}"  
-                                class="btn btn-sm btn-info">Lihat</a>
-                                <a href="{!! route('kategori_galeri.edit' ,[$item->id]) !!}"  
-                                class="btn btn-sm btn-success">Ubah</a>
-
-                        {!! Form::open(['route'=> ['kategori_galeri.destroy', $item->id], 'method'=>'delete']) !!}
-                        
-                        {!! Form::submit('Hapus',['class'=>'btn btn-danger','onclick'=>"return confirm('Apakah Anda Yakin ingin Menghapus Data ini?')"]); !!}
-
-                        {!! Form::close() !!}
+                                class="btn btn-sm btn-success">Lihat</a>
+                            <a href="{!! route('kategori_galeri.edit' ,[$item->id]) !!}"  
+                                class="btn btn-sm btn-warning">Ubah</a>
+                                {!! Form::open(['route' => ['kategori_galeri.destroy', $item->id], 'method'=>'delete']) !!}
+                                
+                                {!! Form::submit('Hapus',['class'=>'btn btn-sm btn-danger','onclick'=>"return confirm('Apakah Anda Yakin Menghapus Data Ini?')"]) !!}
+                                
+                                {!! Form::close() !!}
                     </tr>
 
                         @endforeach

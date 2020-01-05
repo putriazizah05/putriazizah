@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class kategoriArtikel extends Model
+class KategoriArtikel extends Model
 {
     use SoftDeletes;
 
@@ -16,8 +16,7 @@ class kategoriArtikel extends Model
     ];
 
     protected $casts=[
-        'Deleted_at'=>'datetime'
-        
+        'deleted_at'=>'datetime'
     ];
 
 }

@@ -5,13 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Tambah Pengumuman</div>   
-                             
+                <div class="card-header">Tambah Pengumuman</div>                
                 <div class="card-body">
-                <form method="post" action="{!! route('pengumuman.store') !!}">
-                     @include('pengumuman.form')
-                </form>
-
+                {!! Form::open(['route' => 'pengumuman.store', 'method' => 'post']) !!}
+                    @include('pengumuman.form')
+                {!! Form::close() !!}
+                    </form>
                 </div>
             </div>
         </div>
@@ -21,11 +20,13 @@
 @endsection
 
 @section('scripts')
-<script src="https://cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script>
     <script>
-    $(document).ready(function() {
-        CKEDITOR.replace( 'isi' );
+    $(document).ready(function(){
+        CKEDITOR.replace('isi')
     });
     </script>
+
 @endsection
+      
  

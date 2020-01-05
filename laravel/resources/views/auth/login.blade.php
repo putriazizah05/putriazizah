@@ -12,10 +12,10 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="contact" class="col-md-4 col-form-label text-md-right">{{ __('contact') }}</label>
+                            <label for="contact" class="col-md-4 col-form-label text-md-right">{{ __('Contact') }}</label>
 
                             <div class="col-md-6">
-                                <input id="contact" type="number" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" required autocomplete="contact" autofocus>
+                                <input id="contact" type="contact" class="form-control @error('contact') is-invalid @enderror" name="contact" value="{{ old('contact') }}" required autocomplete="contact" autofocus>
 
                                 @error('contact')
                                     <span class="invalid-feedback" role="alert">
@@ -38,28 +38,18 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('captcha') }}</label>
+                        <div class="form-group row"{{ $errors->has('captcha')}}>
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label>
 
                             <div class="col-md-6">
-                             <div class="captcha">
-                                <span>{!! captcha_img () !!}</span>
-                                <button type="button" class=" btn btn-success btn-refresh">refresh</button>
-                            </div>
-                            
-                                <input id="captcha" type="text" class="form-control mt-2 @error('captcha') is-invalid @enderror" name="captcha" placeholder="Enter captcha">
+                                <div class="captcha">
+                                    <span>{!! captcha_img() !!}</span>
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn btn-success btn-refresh">Refresh</button>
+                                </div>
+                                <br>
+                                <input type="text" id="captcha"  placeholder="Enter Captcha" name="captcha" class="form-control @error('captcha') is-invalid @enderror" required >
 
                                 @error('captcha')
                                     <span class="invalid-feedback" role="alert">
@@ -68,7 +58,17 @@
                                 @enderror
                             </div>
                         </div>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
+                                        <label class="form-check-label" for="remember">
+                                            {{ __('Remember Me') }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
